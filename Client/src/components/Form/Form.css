@@ -1,0 +1,20 @@
+.search-div {
+    display: flex;
+    flex-direction: row-reverse;
+   
+}
+.search-div-button {
+    background: transparent;
+    outline: none;
+    border: none;
+    margin-right: 300px;
+}
+.search-div-img {
+    width: 40px; 
+
+}
+.search-input {
+    border-radius: 5px;
+    outline: none;
+    border:1px solid;
+}

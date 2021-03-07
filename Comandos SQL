@@ -1,0 +1,202 @@
+Comandos SQL
+
+db4free:
+
+usuario: luciagg
+contraseña: 1234LuciaSQL
+
+sudo /opt/lampp/lampp start
+sudo /opt/lampp/lampp stop
+sudo /opt/lampp/lampp restart
+si da probelmas:  https://askubuntu.com/questions/908397/xampplib-line-22-netstat-command-not-found
+si da probelmas: sudo service mysql stop
+
+
+const mariadb = require('mariadb');
+const pool = mariadb.createPool({
+      host: 'db4free.net', 
+      user: 'luciag', 
+      password:'1234Lucia',
+      connectionLimit: 5,
+      database:'movieappp'
+  });
+
+
+Queries SQL
+
+CREATE DATABASE gardenshop
+
+CREATE TABLE gardenshop.products(ID int NOT NULL AUTO_INCREMENT,
+  manufc_ID int NOT NULL,url TEXT NULL , nombre VARCHAR(255) NOT NULL , precio DECIMAL(10) NOT NULL , relevancia VARCHAR(255) NOT NULL , descripcion VARCHAR(255) NOT NULL , PRIMARY KEY (`ID`),CONSTRAINT FK_manufc FOREIGN KEY (manufc_ID)REFERENCES manufc(ID));
+
+CREATE TABLE gardenshop.manufc ( ID INT(10) NOT NULL AUTO_INCREMENT , nombre_comercial VARCHAR(255) NOT NULL , razon_social VARCHAR(255) NOT NULL , cif INT(20) NOT NULL , direccion VARCHAR(255) NOT NULL , codigo_postal INT(10) NOT NULL , PRIMARY KEY (ID)) ENGINE = InnoDB;
+***************
+INSERT INTO `manufc` (`ID`, `nombre_comercial`, `razon_social`, `cif`, `direccion`, `codigo_postal`) VALUES (NULL, 'Verdecora', 'La tienda verdecora S.L', 'B21578522', 'C/ María de los almendros, 57 Cáceres', '10003');
+INSERT INTO `manufc` (`ID`, `nombre_comercial`, `razon_social`, `cif`, `direccion`, `codigo_postal`) VALUES (NULL, 'Vivero Pro-Jardín S.A', 'Pro-jardín viveros de Madrid', 'B51748233', 'C/ Pinos altos Móstoles, Madrid', '28935');
+INSERT INTO `manufc` (`ID`, `nombre_comercial`, `razon_social`, `cif`, `direccion`, `codigo_postal`) VALUES (NULL, 'Plantar y Regar todo es empezar', 'Plantaciones S.L', 'B669955511', 'C/ Tomates y Berros, 68 Toledo', '45004');
+INSERT INTO `manufc` (`ID`, `nombre_comercial`, `razon_social`, `cif`, `direccion`, `codigo_postal`) VALUES (NULL, 'Centro de jardinería Rosaleda', 'Rosaleda S.A.', 'B55149269', 'C/ Rosa alta, 25 Barcelona', '08038');
+INSERT INTO `manufc` (`ID`, `nombre_comercial`, `razon_social`, `cif`, `direccion`, `codigo_postal`) VALUES (NULL, 'Pon un tomate en tu vida ', 'C/ de la Tomatera, 159  Málaga', 'B66772200', 'Avda. de los parque unidos, 233', '29016');
+***************
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '1', 'https://articulos.infojardin.com/plantas/fotos-plantas-fichas/allamanda.jpg', 'Alamanda, Jazmín de Cuba', '12.9', '3', 'Alamanda o Trompeta amarilla, es una planta trepadora o enredadera con bonitas flores amarillas en forma de trompeta y hojas perennes. Puede llegar a florecer todo el año, pero especialmente de mediados de verano hasta otoño.');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '1', 'https://articulos.infojardin.com/plantas_de_interior/Fichas/fotos-fichas/blechnum-gibbum.jpg', 'Blecno, Yerba de papagayo', '25.50', '5', 'Helecho que forma una mata compacta. Hojas: frondas de 50 cm de largo, profundamente divididas, sobre pecíolos provistos de escamas negras. Tolera más luz que la mayoría de los otros helechos, así que póngalo');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '1', 'https://articulos.infojardin.com/plantas/fotos-plantas-plantas/camelia.jpg', 'Camelia, Camelio', '7.45', '4', 'Arbusto o árbol perennifolio. Crecimiento lento, excepcional por su floración, las flores son solitarias, aparecen en el ápice de cada rama, y son con una corola simple o doble, y comprendiendo varios colores. Suelen medir unos 7-12 cm de diámetro ');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '1', 'https://articulos.infojardin.com/plantas_de_interior/Fichas/fotos-fichas/cordyline-rubra.jpg', 'Drácena roja', '12.00', '5', 'La especie original tiene hojas gruesas de color verde mate y el nervio central rojizo. De las rosetas de hojas surge una masa de florecillas (menos de 1 cm) de color lila. Necesita abundante luz, evitar la luz solar directa.\r\n\r\n');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '1', 'https://fichas.infojardin.com/foto-bonsais/alnus-cordata-bonsai.jpg', 'Aliso napolitano', '85.20', '2', 'Árbol de tronco erguido y esbelto. Corteza de color verde grisáceo con manchas blanquecinas; al llegar a la madurez se agrieta. Hojas simples, alternas, pecioladas, acorazonadas, con el ápice agudo y ligeramente dentadas. Elevada humedad y riego.');
+---
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '2', 'https://fichas.infojardin.com/foto-bonsais/acer-palmatum-deshojo.jpg', 'Arce japonés, Arce palmado', '130', '5', 'Origen: China y Japón. Es uno de los bonsáis más cultivados. Arbusto de hoja caduca. Hojas formadas por cinco lóbulos y con el ápice agudo. Famoso por el color que adquieren las hojas en otoño.');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '2', 'https://fichas.infojardin.com/foto-plantas-carnivoras/dionaea-muscipula.jpg', 'Dionaea, Venus atrapamoscas', '3.25', '4', 'Es la planta carnívora más popular. Consta de un rizoma, del cual salen las hojas en forma de roseta y crecen al nivel del suelo, el final de las hojas se encuentra formada por dos lóbulos (trampa). Tiene un tallo floral, e 2 a 10 flores blancas.');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '2', 'https://articulos.infojardin.com/plantas_de_interior/Fichas/fotos-fichas/pteris-cretica.jpg', 'Helecho temblón, Peteris', '17.85', '3', 'Helecho con rizoma escasamente rastrero. Frondes de 15-80 cm de longitud, con pecíolo más largo que la lámina y con la base truncada. Pinnas basales enteras o aserradas, lineares. Se adapta a interiores con luz artificial.\r\n');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '2', 'https://fichas.infojardin.com/foto-bulbosas/sinningia-speciosa-2.jpg', 'Siningia, Gloxinia', '6.95', '3', 'Hojas aterciopeladas de color verde oscuro, ovales. Flores en forma de campanas, grandes. Colores muy variados: blanco, azul, violeta claro, bicolor azul/blanco. Floración en verano. Luz: lugar bien iluminado .No resiste el frío.');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '2', 'https://fichas.infojardin.com/foto-bulbosas/sparaxis-tricolor-colores.jpg', 'Arlequina, Esparaxis', '11.50', '4', ' Plantar a 5 cm de profundidad a pleno sol antes del 15 de septiembre. Unas semanas más tarde las puntas de las hojas vede manzana asoman sobre el suelo y crecen a lo largo del invierno hasta que aparecen en primavera las flores en bellos colores.');
+---
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '3', 'https://articulos.infojardin.com/plantas_de_interior/Fichas/fotos-fichas/dieffenbachia-2.jpg', 'Diefembaquia', '18.95', '4', 'Es una planta herbácea, perenne, de desarrollo muy rápido (30-46cm/año en interior) La Diefembaquia es una planta venenosa debido a la presencia de cristales de oxalato de calcio en sus células. as flores se disponen en inflorescencias en espádice.');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '3', 'https://fichas.infojardin.com/foto-trepadoras/bouganvillea.jpg', 'Buganvilla', '5.15', '1', 'Son arbustos o árboles pequeños,  de entre 1 hasta 12 m de altura. Se sujetan en otras plantas usando sus afiladas púas que tienen la punta. Amplio uso medicinal tradicional, también sirve como tratamiento para la piel');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '3', 'https://fichas.infojardin.com/foto-arbol/malus-floribunda.jpg', 'Manzano de flor, Manzano rosa, Manzano japonés.', '125', '2', 'Árbol o arbusto de 3-4 m de altura.Hojas ovales, pecioladas, dentadas, de color verde opaco.\r\nFlores pequeñas de color rojo vivo. Frutos: pequeños, casi esféricos, muy pedunculados. Destacan por su espeso follaje coloreado.');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '3', 'https://fichas.infojardin.com/foto-trepadoras/manettia-bicolor.jpg', 'Manetia', '7.20', '5', 'Perenne de hojas acuminadas, poco densas, que crecen sobre delgados estilos de aspecto herbáceo. Durante todo el verano produce curiosas flores tubulares, axilares, de corolas rojas bordeadas de amarillo en el ápice, casi desprovisto de lóbulos.');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '4', 'https://fichas.infojardin.com/foto-crasas/fenestraria-aurantiaca.jpg', 'Fenestraria', '4.50', '1', 'Forman densos grupos de hojas que en su hábitat están prácticamente enterradas en el suelo arenoso de los desiertos, emergiendo de la superficie ligeramente. Las colonias miden 10 cm de diámetro y unos 5 cm de alto. Flor blanca, 2-3 cm de diámetro.\r\n\r\n');
+---
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '4', 'https://fichas.infojardin.com/foto-hortalizas-verduras/lycopersicum-esculentum-tomates.jpg', 'Tomate Jitomate', '2.25', '5', 'El fruto puede ser redondeado, achatado o con forma de pera. La tomatera produce desde diminutos frutos del tamaño de una cereza, hasta enormes frutos de hasta 750 gr.');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '4', 'https://fichas.infojardin.com/foto-perennes-anuales/calendula-officinalis.jpg', 'Caléndula', '1.75', '5', ' Forma pequeñas matas de unos 40 ó 50 cm de altura. Tienen numerosas propiedades: anti inflamatorias, antisépticas, calmantes, antibióticas, y para tratar indigestiones, úlceras estomacales y conjuntivitis.  La floración dura casi todo el año.\r\n');
+NSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '4', 'https://fichas.infojardin.com/foto-hortalizas-verduras/phaseolus-vulgaris-judias-v.jpg', 'Judías verdes', '0.75', '3', 'Existen variedades de judía arbustiva (enana) y trepadora. Es un fruto en legumbre (vaina) en cuyo interior se localizan de 4 a 6 semillas. Es planta de clima húmedo y suave, dando las mejores producciones en climas cálidos.\r\n');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '4', 'https://fichas.infojardin.com/foto-hortalizas-verduras/zea-mays-maiz-dulce.jpg', 'Maíz dulce,', '3.45', '1', 'Planta vigorosa que alcanza los 2 metros de altura. Cada tallo de maíz debe producir como mínimo una mazorca grande. Maíz dulce es un vegetal de estación caliente que puede ser cultivado fácilmente en cualquier huerto con suficiente luz.\r\n\r\n');
+INSERT INTO `products` (`ID`, `manufc_ID`, `url`, `nombre`, `precio`, `relevancia`, `descripcion`) VALUES (NULL, '4', 'https://fichas.infojardin.com/foto-condimentos/thymus-vulgaris.jpg', 'Tomillo', '1.20', '5', 'Es una de las hierbas más utilizadas como condimento, probablemente debido a sus propiedades digestivas. Las hojas son muy pequeñas, de unos 6 mm de longitud; - Esta planta despide un intenso y típico aroma, que se incrementa con el roce.\r\n');
+
+// mostrar todos los datos (products y manufc)
+SELECT products.*, manufc.* FROM products INNER JOIN manufc ON products.manufc_ID = manufc.ID
+
+// mostrar todos los productos
+SELECT * FROM products 
+
+// mostrar solo los productos por ID
+SELECT products.*, manufc.* FROM products INNER JOIN manufc ON products.manufc_ID = manufc.ID WHERE products.ID = ? ,[id] esto es aparte, let id = req.params.id
+
+// añadir columna type a productos
+ALTER TABLE products ADD COLUMN type text;
+
+// rellenar campo type de productos con -product-
+UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 1; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 2; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 3; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 4; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 5; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 6; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 7; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 8; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 9; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 10; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 11; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 12; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 13; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 14; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 15; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 16; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 17; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 18; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 19; UPDATE `products` SET `type` = 'product' WHERE `products`.`ID` = 20;
+
+//añadir columna type a manufc
+ALTER TABLE manufc ADD COLUMN type text;
+
+// buscar products por type (product)
+select * from products where type like '%product%'
+
+// buscar manufc por type (manufc)
+select * from manufc where type like '%manufc%'
+
+
+
+
+
+
+
+Crear una base de datos
+
+  CREATE DATATABASE mibasedeatos;
+Crear una tabla
+
+  CREATE TABLE Persons
+  (
+  PersonID int,
+  LastName varchar(255),
+  FirstName varchar(255),
+  Address varchar(255),
+  City varchar(255)
+  );
+Ejemplo
+SELECT - Realizar consultas
+
+Traer todos los datos de una tabla
+  SELECT * FROM nombretabla;
+Traer solo alguna columnas de una tabla
+  SELECT columna1, columna2 FROM nombretabla;
+WHERE - Condicciones de filtrado
+
+  SELECT * FROM personas 
+  WHERE nombre = 'PEPE'
+AND OR - Condicciones lógicas
+
+  SELECT * FROM personas 
+  WHERE nombre = 'PEPE' 
+  AND apellido1 = 'PEREZ'
+ORDER BY - Ordenación
+
+  SELECT nombre, apellido1 
+  FROM personas 
+  ORDER BY apellido1 ASC;
+INSERT: Añadiendo datos en la tabla
+
+INSERT INTO nombre_tabla 
+VALUES (valor1, valor2, valor3);
+UPDATE: Actualizar datos en la tabla
+
+UPDATE personas 
+SET apellido2 = 'RODRIGUEZ' 
+WHERE nombre = 'ANTONIO' 
+AND apellido1 = 'GARCIA' 
+AND apellido2 = 'BENITO';
+DELETE: Vaciar datos en la tabla
+
+Todos los datos de una tabla
+  DELETE * FROM nombre_tabla;
+Una fila específica
+  DELETE FROM personas 
+  WHERE nombre = 'LUIS' 
+  AND apellido1 = 'LOPEZ' 
+  AND apellido2 = 'PEREZ';
+ALTER: Eliminamos datos
+
+Índice
+  ALTER TABLE nombretabla 
+  DROP INDEX nombreindice;
+DROP: Eliminar tablas/ base de datos
+
+Tabla
+  DROP TABLE nombretabla;
+Base de datos
+
+  DROP DATABASE nombrebasededatos;
+PRIMARY KEY
+
+Clave primaria en una columna
+  CREATE TABLE personas 
+  { 
+    identificador int NOT NULL, 
+    nombre varchar(255) NOT NULL, 
+    apellido1 varchar(255) NOT NULL, 
+    PRIMARY KEY (identificador) 
+  };
+Clave primaria usando multiples columnas
+  CREATE TABLE personas 
+  { 
+    identificador int NOT NULL, 
+    nombre varchar(255) NOT NULL, 
+    apellido1 varchar(255) NOT NULL, 
+    CONSTRAINT pers PRIMARY KEY (identificador, nombre) 
+  };
+FOREIGN KEY
+
+Relaciona la clave primaria de otra tabla
+  CREATE TABLE departamentos 
+  { 
+  dep int NOT NULL PRIMARY KEY, 
+  departamento varchar(255), 
+  };
+  
+  CREATE TABLE personas 
+  { 
+  per int NOT NULL PRIMARY KEY, 
+  nombre varchar(255), 
+  apellido1 varchar(255), 
+  dep int FOREIGN KEY REFERENCES departamentos (dep) 
+  };
+Crear tabla con autoincremento
+
+CREATE TABLE personas 
+{ 
+  persona int NOT NULL AUTO_INCREMENT, 
+  nombre varchar(255), 
+  apellido1 varchar(255), 
+  apellido2 varchar(255) 
+};
