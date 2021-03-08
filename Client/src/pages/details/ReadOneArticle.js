@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import '../details/ReadOneArticle.scss';
 
 
-const ReadOneArticle =  (item) => { // necesito que me llegue por parámetro el articulo que le marco en el navegador
-  console.log(item); // despliego details y dentro de match.params llego al ID
+const ReadOneArticle =  (item) => { // los datos nos llegan a través del botón detalles, link to /details/${ID}, y es a través de routes, ( que llama al back) como llegan los datos al parámetro item
+  console.log(item); // despliegoy dentro de match.params llego al ID
   let id = item.match.params.id  
   const [details, setDetails] = useState([])
   const [product_id, setId] = useState(id)

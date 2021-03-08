@@ -13,14 +13,14 @@ const port = process.env.PORT || 5000
 app.use(bodyParser.json());
 app.use(cors());
 require('dotenv').config(); // rutas protegidas
-app.use(express.static(path.join(__dirname, '../Client/build'))); // Serve the static files from the React app
+app.use(express.static(path.join(__dirname, '../Client/build'))); // Servir los archivos estáticos de la aplicación React
 
 
 // routes
 
 app.use('/api/products', require('./routes/products'))
 
-// Handles any requests that don't match the ones above
+// Gestiona las solicitudes que no coinciden con las anteriores
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '../Client/build/index.html'));
 });

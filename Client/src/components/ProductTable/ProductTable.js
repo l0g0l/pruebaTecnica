@@ -56,7 +56,7 @@ const ProductTable = (props) => {
     if (!sortConfig) {
       return;
     }
-    return sortConfig.key === name ? sortConfig.direction : undefined; // ?????????
+    return sortConfig.key === name ? sortConfig.direction : undefined; 
   };
   return <div>
     <table>
