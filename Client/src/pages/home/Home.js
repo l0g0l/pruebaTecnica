@@ -1,18 +1,16 @@
 import React from 'react';
-import useFetch from '../../hooks/useFetch';
-import ProductTable from '../../components/ProductTable/ProductTable';
 import Form from '../../components/Form/Form';
+import Pagination from '../../components/Pagination/products/Pagination'
 
 
 const Home = () => {
 
-  const datasql = useFetch('http://localhost:5000/api/products')
   
   return (
-    <div className="App">
+    <div className='container mt-5'>
       <Form />
       <br/>
-      <ProductTable products={datasql} />
+      <Pagination />
 
     </div>
   );

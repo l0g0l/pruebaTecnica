@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import ProductTable from '../../ProductTable/ProductTable';
-import Form from '../../Form/Form';
 import Items from '../../Pagination/products/items';
 
 
@@ -33,8 +32,6 @@ const Pagination = () => {
 
   return (
     <div className='container mt-5'>
-      <Form />  
-      <br/> 
       <ProductTable products={currentPosts} />
       <Items
         postsPerPage={postsPerPage}

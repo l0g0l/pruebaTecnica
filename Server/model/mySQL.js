@@ -48,38 +48,5 @@ exports.getProductsDetails = async (req, res) => {
 
 }
 
-exports.getProductsByType = async (req, res) => {
 
-  let conn
-  try {
-    conn = await pool.getConnection();
-    let response = await conn.query(`select * from products where type like '%product%'`)
-    res.json(response)
 
-  } catch (err) {
-    console.log(err)
-    res.json(err[0]);
-  } finally {
-    if (conn) conn.end();
-    res.end()
-  }
-
-}
-
-exports.getManufcByType = async (req, res) => {
-
-  let conn
-  try {
-    conn = await pool.getConnection();
-    let response = await conn.query(`select * from manufc where type like '%manufc%'`)
-    res.json(response)
-
-  } catch (err) {
-    console.log(err)
-    res.json(err[0]);
-  } finally {
-    if (conn) conn.end();
-    res.end()
-  }
-
-}

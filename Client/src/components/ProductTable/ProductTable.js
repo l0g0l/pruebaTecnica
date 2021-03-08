@@ -45,23 +45,6 @@ const useSortableData = (items, config = null) => {
    
   };
 
-  // const changeRelevance = () => {
-  //   console.log(sortConfig);
-    
-  //   if(sortedItems.relevancia === 5) {
-  //     <span class = "glyphicon glyphicon-leaf"> </ span>
-  //   }else if (sortedItems.relevancia === 4) {
-  //     <span class = "glyphicon glyphicon-leaf"> </ span>
-  //   }else if (sortedItems.relevancia === 3) {
-  //     <span class = "glyphicon glyphicon-leaf"> </ span>
-  //   }else if (sortedItems.relevancia === 2) {
-  //     <span class = "glyphicon glyphicon-leaf"> </ span>
-  //   }else if (sortedItems.relevancia === 1) {
-  //     <span class = "glyphicon glyphicon-leaf"> </ span>
-  // } 
-
-  // console.log(sortConfig); // null
-  // console.log(sortedItems)  // 10 artículos
   return { items: sortedItems, requestSort, sortConfig };
 };
 
@@ -109,7 +92,7 @@ const ProductTable = (props) => {
         </tr>
       </thead>
       <tbody >
-        {items.map((item) => ( // ?????????
+        {items.map((item) => ( 
           <tr key={item.id}>
             <td>{item.nombre}</td>
             <td>{item.precio}€</td>
